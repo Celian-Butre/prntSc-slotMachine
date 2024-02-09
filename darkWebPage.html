@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Refresh Image</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevent scrollbars */
+            background-color: #000; /* Set background color to black */
+        }
+        
+        #myImage {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <img id="myImage" src="loadedImage" alt="Your Image">
+
+    <script>
+        // Function to refresh the image
+        function refreshImage() {
+            var image = document.getElementById('myImage');
+            var timestamp = new Date().getTime(); // Add timestamp to prevent caching
+            image.src = "loadedImage?" + timestamp; // Append timestamp to the image URL
+        }
+
+        // Call the refreshImage function on startup
+        refreshImage();
+
+        // Call the refreshImage function every tenth of a second
+        setInterval(refreshImage, 100); // 100 milliseconds = 1/10th of a second
+    </script>
+</body>
+</html>
