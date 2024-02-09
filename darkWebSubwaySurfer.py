@@ -13,8 +13,10 @@ def saveImage(url, save_path):
         with open(save_path, 'wb') as f:
             f.write(response.content)
         print("Image downloaded successfully")
+        return(True)
     else:
         print("Failed to download image")
+        return(False)
 
 
 def find_expression(filename):
@@ -43,8 +45,8 @@ def downloadImage(url, name):
         return(None)
     print(expression)
     subprocess.run(str("rm -r prnt.sc"), shell=True, capture_output=True, text=True)
-    saveImage(expression, str("images/" + name))
-    imageList.append(str("images/" + name))
+    if (saveImage(expression, str("images/" + name))):
+        imageList.append(str("images/" + name))
 
 
 
