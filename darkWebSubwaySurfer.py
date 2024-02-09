@@ -12,10 +12,10 @@ def saveImage(url, save_path):
     if response.status_code == 200:
         with open(save_path, 'wb') as f:
             f.write(response.content)
-        print("Image downloaded successfully")
+        #print("Image downloaded successfully")
         return(True)
     else:
-        print("Failed to download image")
+        #print("Failed to download image")
         return(False)
 
 
@@ -39,11 +39,11 @@ def downloadImage(url, name):
     global imageList
     subprocess.run(str("wget -p --convert-links " + url), shell=True, capture_output=True, text=True)
     filename = str("prnt.sc/" + name)
-    print(filename)
+    #print(filename)
     expression = find_expression(filename)
     if expression == None:
         return(None)
-    print(expression)
+    #print(expression)
     subprocess.run(str("rm -r prnt.sc"), shell=True, capture_output=True, text=True)
     if (saveImage(expression, str("images/" + name))):
         imageList.append(str("images/" + name))
@@ -111,7 +111,7 @@ nextFlip = time.time()
 def generateLoop():
     global paused, nextFlip, imageList, currentString
     while True:
-        print(imageList)
+        #print(imageList)
         if not paused:
             if (time.time() > nextFlip) and len(imageList) != 0:
                 showImage(imageList.pop(0))
