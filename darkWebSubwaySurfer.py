@@ -5,6 +5,7 @@ import re
 imageList = []
 
 def showImage(save_path):
+    print("https://prnt.sc/" + save_path[7:])
     subprocess.run(str("mv " + save_path + " " + "./loadedImage"), shell=True, capture_output=True, text=True)
 
 def saveImage(url, save_path):
@@ -121,7 +122,7 @@ def generateLoop():
             currentString = generate_next_string(currentString, 1)
             url = "https://prnt.sc/" + currentString
             downloadImage(url, currentString)
-            print(url)
+            #print(url)
 
 mainLoop = threading.Thread(target=generateLoop)
 mainLoop.daemon = True  # Set the thread as daemon so it stops when the main program stops
