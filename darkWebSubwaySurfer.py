@@ -4,6 +4,8 @@ import re
 
 imageList = []
 
+subprocess.run(str("rm images/*"), shell=True, capture_output=True, text=True)
+
 def showImage(save_path):
     print("https://prnt.sc/" + save_path[7:])
     subprocess.run(str("mv " + save_path + " " + "./loadedImage"), shell=True, capture_output=True, text=True)
